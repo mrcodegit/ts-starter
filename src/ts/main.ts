@@ -1,3 +1,3 @@
 import '../scss/main.scss';
 
-console.log('SOM STARTER');
+console.log('SOM STARTER'); 

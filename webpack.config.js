@@ -1,6 +1,5 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const HtmlWebpackReloadPlugin = require('html-webpack-reload-plugin');
 module.exports = {
     entry: './src/ts/main.ts',
     target: 'web',
@@ -17,21 +16,17 @@ module.exports = {
                     "style-loader",
                     "css-loader",
                     "sass-loader"
-                ]
+                ],
+                exclude: /node_modules/
             }
         ]
     },
-    resolve: {
-        extensions: ['.ts', '.js']
-    },
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    },
     plugins: [
         new HtmlWebpackPlugin({
+            hash: true,
             template: './src/index.html',
             filename: 'index.html'
-        })
+        }),
+        new HtmlWebpackReloadPlugin()
     ]
 };
